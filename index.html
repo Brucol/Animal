@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>动物识别系统</title>
+    <link href="bootstrap.min.css" rel="stylesheet"/>
+    <link href="index.css" rel="stylesheet"/>
+</head>
+<body>
+    <!--标题栏-->
+    <div class="page-header">
+        <h1>动物识别系统 <small>产生式系统应用</small></h1>
+    </div>
+
+    <!--主体框-->
+    <div id="content" class="row">
+        <!--事实框-->
+        <div id="positive_box" class="col-md-8">
+            <h4>请输入动物特征<small>(最多可输入6个)</small>：</h4>
+            <div class="input-group">
+                <span class="input-group-addon">1.</span>
+                <input type="text" class="form-control">
+            </div>
+            <div class="input-group">
+                <span class="input-group-addon">2.</span>
+                <input type="text" class="form-control">
+            </div>
+            <div class="input-group">
+                <span class="input-group-addon">3.</span>
+                <input type="text" class="form-control">
+            </div>
+            <div class="input-group">
+                <span class="input-group-addon">4.</span>
+                <input type="text" class="form-control">
+            </div>
+            <div class="input-group">
+                <span class="input-group-addon">5.</span>
+                <input type="text" class="form-control">
+            </div>
+            <div class="input-group">
+                <span class="input-group-addon">6.</span>
+                <input type="text" class="form-control">
+            </div>
+            <input type="button" id="distinguish_btn" value="开始识别"/>
+        </div>
+
+        <!--结论框-->
+        <div id="conclusion_box" class="col-md-6">
+            <h4>结论：</h4>
+        </div>
+    </div>
+</body>
+</html>

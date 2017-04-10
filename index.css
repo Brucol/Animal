@@ -1,0 +1,45 @@
+.page-header{
+    margin: 0;
+    height: 100px;
+    padding-left: 40px;
+    background-color: beige;
+}
+
+.page-header h1{
+    margin: 0;
+    line-height: 100px;
+}
+
+#content{
+    width: 60%;
+    min-height: 600px;
+    border: 1px solid darkgray;
+    border-radius: 1%;
+    margin: 10px 40px 5px 40px;
+}
+
+#positive_box{
+    width: 45%;
+}
+
+#positive_box h4,
+#conclusion_box h4{
+    margin: 20px;
+}
+
+#positive_box .input-group{
+    width: 70%;
+    margin: 20px 0px 10px 50px;
+}
+
+input#distinguish_btn{
+    width: 90px;
+    height: 35px;
+    margin: 25px 115px;
+}
+
+#conclusion_box{
+    width: 45%;
+    float: right;
+    min-height: 300px;
+}
