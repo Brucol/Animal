@@ -32,7 +32,8 @@
     margin: 20px 0px 10px 50px;
 }
 
-input#distinguish_btn{
+input#distinguish_btn,
+input#clear_all{
     width: 90px;
     height: 35px;
     margin: 25px 115px;
