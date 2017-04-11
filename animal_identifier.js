@@ -7,102 +7,144 @@ Created by Brucol on 2017/4/10.
     this.f = f;
 }*/
 
-//创建静态规则集
-var r = new Object();
-r[0].Condition[0] = '有毛发';
-r[0].Cnum = 1;
-r[0].Result = '哺乳动物';
-r[0].used = false;
+function Rules(){
+    this.Condition = new Array;
+    this.Cnum = 0;
+    this.Result = '';
+    this.used = new Boolean();
+}
 
-r[1].Condition[0] = '有奶';
-r[1].Cnum = 1;
-r[1].Result = '哺乳动物';
-r[1].used = false;
 
-r[2].Condition[0] = '会飞';
-r[2].Cnum = 1;
-r[2].Result = '鸟';
-r[2].used = false;
+function Create_Rules(){
+    //创建静态规则集
+    var r = new Array;
+    var r0 = new Rules();
+    var r1 = new Rules();
+    var r2 = new Rules();
+    var r3 = new Rules();
+    var r4 = new Rules();
+    var r5 = new Rules();
+    var r6 = new Rules();
+    var r7 = new Rules();
+    var r8 = new Rules();
+    var r9 = new Rules();
+    var r10 = new Rules();
+    var r11 = new Rules();
+    var r12 = new Rules();
+    var r13 = new Rules();
 
-r[3].Condition[0] = '吃肉';
-r[3].Cnum = 1;
-r[3].Result = '食肉动物';
-r[3].used = false;
 
-r[4].Condition[0] = '有锋利的牙齿' ;
-r[4].Condition[1] = '有爪' ;
-r[4].Cnum = 2;
-r[4].Result = '食肉动物';
-r[4].used = false;
+    r0.Condition[0] = '有毛发';
+    r0.Cnum = 1;
+    r0.Result = '哺乳动物';
+    r0.used = false;
+    r.push(r0);
 
-r[5].Condition[0] = '哺乳动物';
-r[5].Condition[1] = '有蹄';
-r[5].Cnum = 2;
-r[5].Result = '有蹄类哺乳动物';
-r[5].used = false;
+    r1.Condition[0] = '有奶';
+    r1.Cnum = 1;
+    r1.Result = '哺乳动物';
+    r1.used = false;
+    r.push(r1);
 
-r[6].Condition[0] = '哺乳动物';
-r[6].Condition[1] = '有蹄动物';
-r[6].Condition[2] = '长腿';
-r[6].Condition[3] = '长脖子';
-r[6].Condition[4] = '有暗斑点';
-r[6].Condition[5] = '黄褐色';
-r[6].Cnum = 6;
-r[6].Result = '长颈鹿';
-r[6].used = false;
+    r2.Condition[0] = '会飞';
+    r2.Cnum = 1;
+    r2.Result = '鸟';
+    r2.used = false;
+    r.push(r2);
 
-r[7].Condition[0] = '有羽毛';
-r[7].Cnum = 1;
-r[7].Result = '鸟';
-r[7].used = false;
+    r3.Condition[0] = '吃肉';
+    r3.Cnum = 1;
+    r3.Result = '食肉动物';
+    r3.used = false;
+    r.push(r3);
 
-r[8].Condition[0] = '鸟';
-r[8].Condition[0] = '不怕风浪';
-r[8].Cnum = 2;
-r[8].Result = '海燕';
-r[8].used = false;
+    r4.Condition[0] = '有锋利的牙齿' ;
+    r4.Condition[1] = '有爪' ;
+    r4.Cnum = 2;
+    r4.Result = '食肉动物';
+    r4.used = false;
+    r.push(r4);
 
-r[9].Condition[0] = '有蹄动物';
-r[9].Condition[1] = '有黑白条纹';
-r[9].Cnum = 2;
-r[9].Result = '斑马';
-r[9].used = false;
+    r5.Condition[0] = '哺乳动物';
+    r5.Condition[1] = '有蹄';
+    r5.Cnum = 2;
+    r5.Result = '有蹄类哺乳动物';
+    r5.used = false;
+    r.push(r5);
 
-r[10].Condition[0] = '哺乳动物';
-r[10].Condition[1] = '食肉动物';
-r[10].Condition[2] = '黄褐色';
-r[10].Condition[3] = '头上有王字';
-r[10].Cnum = 4;
-r[10].Result = '老虎';
-r[10].used = false;
+    r6.Condition[0] = '哺乳动物';
+    r6.Condition[1] = '有蹄动物';
+    r6.Condition[2] = '长腿';
+    r6.Condition[3] = '长脖子';
+    r6.Condition[4] = '有暗斑点';
+    r6.Condition[5] = '黄褐色';
+    r6.Cnum = 6;
+    r6.Result = '长颈鹿';
+    r6.used = false;
+    r.push(r6);
 
-r[11].Condition[0] = '哺乳动物';
-r[11].Condition[1] = '食肉动物';
-r[11].Condition[2] = '黄褐色';
-r[11].Condition[3] = '有斑点';
-r[11].Cnum = 4;
-r[11].Result = '金钱豹';
-r[11].used = false;
+    r7.Condition[0] = '有羽毛';
+    r7.Cnum = 1;
+    r7.Result = '鸟';
+    r7.used = false;
+    r.push(r7);
 
-r[12].Condition[0] = '鸟';
-r[12].Condition[1] = '不会飞';
-r[12].Condition[2] = '会游泳';
-r[12].Condition[3] = '生活在南极';
-r[12].Cnum = 4;
-r[12].Result = '企鹅';
-r[12].used = false;
+    r8.Condition[0] = '鸟';
+    r8.Condition[0] = '不怕风浪';
+    r8.Cnum = 2;
+    r8.Result = '海燕';
+    r8.used = false;
+    r.push(r8);
 
-r[13].Condition[0] = '鸟';
-r[13].Condition[1] = '长脖子';
-r[13].Condition[2] = '长腿';
-r[13].Condition[3] = '不会飞';
-r[13].Cnum = 4;
-r[13].Result = '鸵鸟';
-r[13].used = false;
+    r9.Condition[0] = '有蹄动物';
+    r9.Condition[1] = '有黑白条纹';
+    r9.Cnum = 2;
+    r9.Result = '斑马';
+    r9.used = false;
+    r.push(r9);
+
+    r10.Condition[0] = '哺乳动物';
+    r10.Condition[1] = '食肉动物';
+    r10.Condition[2] = '黄褐色';
+    r10.Condition[3] = '头上有王字';
+    r10.Cnum = 4;
+    r10.Result = '老虎';
+    r10.used = false;
+    r.push(r10);
+
+    r11.Condition[0] = '哺乳动物';
+    r11.Condition[1] = '食肉动物';
+    r11.Condition[2] = '黄褐色';
+    r11.Condition[3] = '有斑点';
+    r11.Cnum = 4;
+    r11.Result = '金钱豹';
+    r11.used = false;
+    r.push(r11);
+
+    r12.Condition[0] = '鸟';
+    r12.Condition[1] = '不会飞';
+    r12.Condition[2] = '会游泳';
+    r12.Condition[3] = '生活在南极';
+    r12.Cnum = 4;
+    r12.Result = '企鹅';
+    r12.used = false;
+    r.push(r12);
+
+    r13.Condition[0] = '鸟';
+    r13.Condition[1] = '长脖子';
+    r13.Condition[2] = '长腿';
+    r13.Condition[3] = '不会飞';
+    r13.Cnum = 4;
+    r13.Result = '鸵鸟';
+    r13.used = false;
+    r.push(r13);
+
+    return r;
+}
 
 
 //从输入框中获取输入的事实，构造事实集f
-    function Creat_Fact(){
+    function Create_Fact(){
         var f1 = new Array;
         var f = new Array;
         var Fnum = 0;
@@ -116,6 +158,7 @@ r[13].used = false;
             else
                 break;
         }
+        return f;
     }
 
 //创建控制策略
@@ -202,4 +245,8 @@ r[13].used = false;
         $('#error').children().remove();
     }
 
+function Identify(){
+    var r = Create_Rules();
+    var f = Create_Fact();
+}
 
