@@ -16,6 +16,7 @@ function Rules(){
 
 
 function Create_Rules(){
+    console.log('开始创建规则集...');
     //创建静态规则集
     var r = new Array;
     var r0 = new Rules();
@@ -145,6 +146,7 @@ function Create_Rules(){
 
 //从输入框中获取输入的事实，构造事实集f
     function Create_Fact(){
+        console.log('开始构造事实集...');
         var f1 = new Array;
         var f = new Array;
         var Fnum = 0;
@@ -246,7 +248,9 @@ function Create_Rules(){
     }
 
 function Identify(){
+    console.log('开始识别...');
     var r = Create_Rules();
     var f = Create_Fact();
+    reason(r,f);
 }
 
