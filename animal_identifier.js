@@ -160,12 +160,14 @@ function animal_identifier(r, f) {
                             f.add(ans);
                             var f2 = new Array;
                             f2 = $('.fact');
-                            for(var i = 0; i < f2.length - 1; i++){
+                            for(var i = 0; i < f2.length; i++){
                                 if(f2[i].value == "")
                                     f2[i].value = ans;   //把新加入的事实显示在事实框中
                                 else
                                     continue;
                             }
+                            if(i >= f2.length)
+                                alert("输入事实个数多于6个，请适当调整事实再识别。");
                         }
                         else
                             break;
@@ -179,9 +181,13 @@ function animal_identifier(r, f) {
         }
     }
 
+    //插入事实函数
     function Insert_Fact(f, result){
         f.append('result');
         Fnum++;
     }
 
+    $('#clear_all').click(function () {
+        $('.fact')
+    })
 
