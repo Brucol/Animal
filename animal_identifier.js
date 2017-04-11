@@ -1,9 +1,10 @@
 /**
  * Created by ASUS on 2017/4/10.
  */
-function animal_identifier(r, f){
-    this.rules = r;
-    this.facts = f;
+function animal_identifier(r, f) {
+    this.r = r;
+    this.f = f;
+}
 
     function Creat_Rules(){
         var r = new Object();
@@ -99,17 +100,30 @@ function animal_identifier(r, f){
         r[13].used = false;
     }
 
-    function Creat_Fact(){
-        var f = $('.input-group input').value();
-        var Cnum = f.length;
 
+//从输入框中获取输入的事实，构造事实集f
+    function Creat_Fact(){
+        var f1 = new Array;
+        var f = new Array;
+        var Fnum = 0;
+        var i = 0;
+        f1 = $('.fact');
+        for(i = 0; i < f1.length; i++) {
+            if (f1[i].value != ""){
+                f[i] = f1[i].value;   //f为事实集
+                Fnum++;
+            }
+            else
+                break;
+        }
     }
 
-    function reason(){
+//
+    function reason(r, f){
         var i = 0;
         var  FindFact = new Boolean();
         while(1){
-            for(i = 0; i < f.Cnum; i++){
+            for(i = 0; i < f.Fnum; i++){
                 if(r[i].used == false){
                     for(j = 0;　j < r[i].Cnum; j++){
                         if(FindFact(r[i].Condition[j])){
@@ -117,20 +131,57 @@ function animal_identifier(r, f){
                                 continue;
                             }
                             else
-                                break;
+                                break;  //跳出if(f[j])
+                        }
+                        else
+                            break; //跳出FindFact()
+                    }
+                }
+
+                if(j == r[i].Cnum - 1){   //如果所有的条件都满足
+                    r[i].used = true;
+                    if(!FindFact(r[i].Result)){
+                        Insert_Fact(f, r[i].Result);  //插入新事实
+                        if(i < 100){
+                            var str = "<p>因为";
+                            for(j = 0; j <　f.Fnum; j++){
+                                str = str + f[j] +　',';
+                            }
+                            str = str + "所以是" + r[i].Result + "</p>";
+                            $('#new_facts').html(str);
+                            i = 0;
+                        }
+                    }
+                    else i++; //查看下条规则
+
+                    if(i == (Fnum - 1)){
+                        var ans = prompt('没有你所找的符合要求的动物，你可以再增加事实来判断属于哪种动物。');
+                        if (ans != null){
+                            f.add(ans);
+                            var f2 = new Array;
+                            f2 = $('.fact');
+                            for(var i = 0; i < f2.length - 1; i++){
+                                if(f2[i].value == "")
+                                    f2[i].value = ans;   //把新加入的事实显示在事实框中
+                                else
+                                    continue;
+                            }
                         }
                         else
                             break;
                     }
-                }
-            }
-            if(j == r[i].Cnum){   //如果所有的条件都满足
-                r[i].used = true;
-                if(!FindFact(r[i].Result)){
-                    Insert_Fact(r[i].Result);  //查出事实
+                    else if (f[Fnum-1] == '长颈鹿'||f[Fnum-1] == '海燕'||f[Fnum-1] == '斑马'||f[Fnum-1] == '老虎'||f[Fnum-1] == '金钱豹'||f[Fnum-1] == '鸵鸟'||f[Fnum-1] == '企鹅'){
+                        var str = "<p>你所描述的动物是" +　f[Fnum-1] +　"。";
+                        $('#conclusion').html(str);
+                    }
                 }
             }
         }
     }
-}
+
+    function Insert_Fact(f, result){
+        f.append('result');
+        Fnum++;
+    }
+
 
