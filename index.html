@@ -19,27 +19,27 @@
             <h4>请输入动物特征<small>(最多可输入6个)</small>：</h4>
             <div class="input-group">
                 <span class="input-group-addon">1.</span>
-                <input type="text" class="form-control">
+                <input class="fact" type="text" class="form-control">
             </div>
             <div class="input-group">
                 <span class="input-group-addon">2.</span>
-                <input type="text" class="form-control">
+                <input class="fact" type="text" class="form-control">
             </div>
             <div class="input-group">
                 <span class="input-group-addon">3.</span>
-                <input type="text" class="form-control">
+                <input class="fact" type="text" class="form-control">
             </div>
             <div class="input-group">
                 <span class="input-group-addon">4.</span>
-                <input type="text" class="form-control">
+                <input class="fact" type="text" class="form-control">
             </div>
             <div class="input-group">
                 <span class="input-group-addon">5.</span>
-                <input type="text" class="form-control">
+                <input class="fact" type="text" class="form-control">
             </div>
             <div class="input-group">
                 <span class="input-group-addon">6.</span>
-                <input type="text" class="form-control">
+                <input class="fact" type="text" class="form-control">
             </div>
             <input type="button" id="distinguish_btn" value="开始识别"/>
         </div>
@@ -47,8 +47,17 @@
         <!--结论框-->
         <div id="conclusion_box" class="col-md-6">
             <h4>结论：</h4>
-            <p>因为有羽毛，所以是鸟。</p>
-            <p>结合以上事实，此动物为海燕。</p>
+            <div id="new_facts"><!--用来放置新事实-->
+
+            </div>
+            <div id="conclusion"><!--用来放置最终结果-->
+
+            </div>
+            <!--<p>因为有羽毛，所以是鸟。</p>-->
+            <!--<p>结合以上事实，此动物为海燕。</p>-->
+            <div id="error"><!--用来提示-->
+
+            </div>
             <input id="clear_all" type="button" value="清空"/>
         </div>
     </div>
