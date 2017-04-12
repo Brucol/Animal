@@ -1,11 +1,5 @@
-/*
- Created by Brucol on 2017/4/10.
- */
 
-/*function animal_identifier(r, f) {
- this.r = r;
- this.f = f;
- }*/
+/*Created by Brucol on 2017/4/10.*/
 
 var f;
 var F;
@@ -78,9 +72,10 @@ function Create_Rules(){
     r4.used = false;
     r.push(r4);
 
-    r5.Condition[0] = '反刍';
-    r5.Cnum = 1;
-    r5.Result = '哺乳动物';
+    r5.Condition[0] = '哺乳动物';
+    r5.Condition[1] = '有蹄';
+    r5.Cnum = 2;
+    r5.Result = '有蹄类哺乳动物';
     r5.used = false;
     r.push(r5);
 
@@ -177,9 +172,6 @@ function Create_Fact(){
 
 //创建控制策略
 function reason(r, f){
-    //var i, j, k, g;
-
-    //var  FindFact = new Boolean();
     while(1){
         var temp = false;
 
@@ -191,66 +183,6 @@ function reason(r, f){
             console.log(f);
             return f;
         }
-
-        /*for(i = 0; i < f.Fnum; i++){
-         for(j = 0;　j < r.length; j++){
-         if(!r[j].used){
-         for(k = 0; k < r[j].Cnum; k++){
-         if(r[j].Cnum == 1 && f.facts[i] == r[j].Condition[k]){
-         f.facts[i] = r[j].Result;
-         continue;   //继续for循环
-         }
-         else{
-         j = 0;
-         break;
-         }
-         }
-         }
-
-         /!*if(k == (r[j].Cnum - 1)){   //如果所有的条件都满足
-         r[i].used = true;
-         if(r[i].Result){
-         Insert_Fact(f, r[j].Result);  //插入事实判断出的新事实
-         if(i < 100){
-         var str = "<p>因为";
-         for(j = 0; j <　f.Fnum; j++){
-         str = str + f.facts[j] +　',';
-         }
-         str = str + "所以是" + r[i].Result + "</p>";
-         $('#new_facts').html(str);
-         i = 0;
-         }
-         }
-         else i++; //查看下条规则
-         }*!/
-         }
-
-
-
-
-         if(i == (f.Fnum - 1)){
-         /!*var ans = prompt('没有你所找的符合要求的动物，你可以再增加事实来判断属于哪种动物。');
-         if (ans != null){
-         Insert_Fact(f,ans);    //插入新输入的事实
-         var f2 = new Array;
-         f2 = $('.fact');
-         for(var i = 0; i < f2.length; i++){
-         if(f2[i].value == "")
-         f2[i].value = ans;   //把新加入的事实显示在事实框中
-         else
-         continue;
-         }
-         if(i >= f2.length)
-         alert("输入事实个数多于6个，请适当调整事实再识别。");
-         }
-         else
-         break;*!/
-         }
-         else if (f.facts[f.Fnum-1] == '长颈鹿'||f.facts[f.Fnum-1] == '海燕'||f.facts[f.Fnum-1] == '斑马'||f.facts[f.Fnum-1] == '老虎'||f.facts[f.Fnum-1] == '金钱豹'||f.facts[f.Fnum-1] == '鸵鸟'||f.facts[f.Fnum-1] == '企鹅'){
-         var str = "<p>你所描述的动物是" +　f[Fnum-1] +　"。";
-         $('#conclusion').html(str);
-         }
-         }*/
     }
     console.log(f);
 }
