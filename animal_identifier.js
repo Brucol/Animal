@@ -7,11 +7,19 @@ Created by Brucol on 2017/4/10.
     this.f = f;
 }*/
 
+//规则集的对象
 function Rules(){
     this.Condition = new Array;
     this.Cnum = 0;
     this.Result = '';
     this.used = new Boolean();
+}
+
+
+//事实集的对象
+function Facts(){
+    this.facts = new Array;
+    this.Fnum = 0;
 }
 
 
@@ -147,15 +155,14 @@ function Create_Rules(){
 //从输入框中获取输入的事实，构造事实集f
     function Create_Fact(){
         console.log('开始构造事实集...');
-        var f1 = new Array;
-        var f = new Array;
-        var Fnum = 0;
-        var i = 0;
-        f1 = $('.fact');
-        for(i = 0; i < f1.length; i++) {
-            if (f1[i].value != ""){
-                f[i] = f1[i].value;   //f为事实集
-                Fnum++;
+        var f1 = new Facts();
+        var f = new Facts();
+
+        f1.facts = $('.fact');
+        for(var i = 0; i < f1.facts.length; i++) {
+            if (f1.facts[i].value != ""){
+                f.facts[i] = f1.facts[i].value;   //f为事实集
+                f.Fnum++;
             }
             else
                 break;
@@ -166,13 +173,13 @@ function Create_Rules(){
 //创建控制策略
     function reason(r, f){
         var i = 0;
-        var  FindFact = new Boolean();
+        //var  FindFact = new Boolean();
         while(1){
             for(i = 0; i < f.Fnum; i++){
                 if(r[i].used == false){
                     for(j = 0;　j < r[i].Cnum; j++){
-                        if(FindFact(r[i].Condition[j])){
-                            if(f[j] == r[i].Condition[j]){
+                        if(r[i].Condition[j]){
+                            if(f.facts[j] == r[i].Condition[j]){
                                 continue;
                             }
                             else
@@ -185,12 +192,12 @@ function Create_Rules(){
 
                 if(j == r[i].Cnum - 1){   //如果所有的条件都满足
                     r[i].used = true;
-                    if(!FindFact(r[i].Result)){
-                        Insert_Fact(f, r[i].Result);  //插入新事实
+                    if(!r[i].Result){
+                        Insert_Fact(f, r[i].Result);  //插入事实判断出的新事实
                         if(i < 100){
                             var str = "<p>因为";
                             for(j = 0; j <　f.Fnum; j++){
-                                str = str + f[j] +　',';
+                                str = str + f.facts[j] +　',';
                             }
                             str = str + "所以是" + r[i].Result + "</p>";
                             $('#new_facts').html(str);
@@ -199,10 +206,10 @@ function Create_Rules(){
                     }
                     else i++; //查看下条规则
 
-                    if(i == (Fnum - 1)){
+                    if(i == (f.Fnum - 1)){
                         var ans = prompt('没有你所找的符合要求的动物，你可以再增加事实来判断属于哪种动物。');
                         if (ans != null){
-                            f.add(ans);
+                            Insert_Fact(f,ans);    //插入新输入的事实
                             var f2 = new Array;
                             f2 = $('.fact');
                             for(var i = 0; i < f2.length; i++){
@@ -217,7 +224,7 @@ function Create_Rules(){
                         else
                             break;
                     }
-                    else if (f[Fnum-1] == '长颈鹿'||f[Fnum-1] == '海燕'||f[Fnum-1] == '斑马'||f[Fnum-1] == '老虎'||f[Fnum-1] == '金钱豹'||f[Fnum-1] == '鸵鸟'||f[Fnum-1] == '企鹅'){
+                    else if (f.facts[f.Fnum-1] == '长颈鹿'||f.facts[f.Fnum-1] == '海燕'||f.facts[f.Fnum-1] == '斑马'||f.facts[f.Fnum-1] == '老虎'||f.facts[f.Fnum-1] == '金钱豹'||f.facts[f.Fnum-1] == '鸵鸟'||f.facts[f.Fnum-1] == '企鹅'){
                         var str = "<p>你所描述的动物是" +　f[Fnum-1] +　"。";
                         $('#conclusion').html(str);
                     }
@@ -228,8 +235,8 @@ function Create_Rules(){
 
     //插入事实函数
     function Insert_Fact(f, result){
-        f.append('result');
-        Fnum++;
+        f.facts.append('result');
+        f.Fnum++;
     }
 
     //清除按钮的事件
@@ -247,10 +254,10 @@ function Create_Rules(){
         $('#error').children().remove();
     }
 
-function Identify(){
+/*function Identify(){
     console.log('开始识别...');
     var r = Create_Rules();
     var f = Create_Fact();
     reason(r,f);
-}
+}*/
 
